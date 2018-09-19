@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Exercicio 6 - JQuery</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+</head>
+
+<body>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <h1>Escolha seu prato</h1>
+    </div>
+
+    <div class="container" style="margin-top:30px">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Tabela de preços</h2>
+
+                <h5>Prato principal</h5>
+                <p><b>Massa: </b>R$30,00</p>
+                <p><b>Carne: </b>R$35,00</p>
+                <p><b>Peixe: </b>R$20,00</p><br>
+
+                <h5>Acompanhamentos</h5>
+                <p><b>Salada: </b>+10,00</p>
+                <p><b>Legumes: </b>+5,00</p>
+                <p><b>Farofa: </b>+5,00</p>
+                <p><b>Fritas: </b>+10,00</p><br>
+
+                <h5>Convênio</h5>
+                <p><b>Abutua: </b>5% de desconto</p>
+                <p><b>Google: </b>5% de desconto</p>
+                <p><b>Prefeitura: </b>10% de desconto</p>
+                <hr class="d-sm-none">
+            </div>
+            <div class="col-sm-8">
+                <h2>MENU</h2>
+                <h5 id="data"></h5>
+                <form name="formPrato" class="form-horizontal">
+                    <br>
+                    <!-- Multiple Radios -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="radios">Prato principal</label>
+                        <div class="col-md-4">
+                            <div class="radio">
+                                <label for="massa">
+                                    <input type="radio" name="prato" value="massa" id="massa" checked> Massa
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="carne">
+                                    <input type="radio" name="prato" value="carne" id="carne"> Carne
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label for="peixe">
+                                    <input type="radio" name="prato" value="peixe" id="peixe"> Peixe
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Multiple Checkboxes -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="checkboxes">Acompanhamentos</label>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                <label for="salada">
+                                    <input type="checkbox" class="chk" id="salada" name="acompanhamentos" value="salada"> Salada
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="legumes">
+                                    <input type="checkbox" class="chk" id="legumes" name="acompanhamentos" value="legumes"> Legumes<br>
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="farofa">
+                                    <input type="checkbox" class="chk" id="farofa" name="acompanhamentos" value="farofa"> Farofa<br>
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="fritas">
+                                    <input type="checkbox" class="chk" id="fritas" name="acompanhamentos" value="fritas"> Fritas<br>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Select Basic -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="convenio">Convênio</label>
+                        <div class="col-md-4">
+                        	<div class="check">
+                        		<select id="convenio" name="convenio" class="form-control">
+	                                <option value="placomp">Placomp</option>
+	                                <option value="abutua">Abutua</option>
+	                                <option value="google">Google</option>
+	                                <option value="prefeitura">Prefeitura</option>
+	                            </select>
+                        	</div>
+                        </div>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="obs">Observações</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" id="textarea" name="obs"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <button id="btn-enviar" name="btn-enviar" type="button" class="btn btn-primary"
+                                data-toggle="modal" data-target="#exampleModal">Enviar</button>
+                            <input type="reset" value="Limpar" class="btn btn-danger">
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+            <!-- ./col-sm-8 -->
+        </div>
+        <!-- ./row -->
+    </div>
+    <!-- ./container -->
+
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Rodapé</p>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Valor total</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="valorTotal"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./modal -->
+
+    <script>
+        function formatarData(date) {
+            var mesNome = [
+                "Janeiro", "Fevereiro", "Março",
+                "Abril", "Maio", "Junho", "Julho",
+                "Agosto", "Setembro", "Outubro",
+                "Novembro", "Dezembro"
+            ];
+
+            var dia = date.getDate();
+            var mesIndex = date.getMonth();
+            var ano = date.getFullYear();
+
+            return dia + ' de ' + mesNome[mesIndex] + ', ' + ano;
+        }
+        document.getElementById("data").innerHTML = formatarData(new Date());
+    </script>
+</body>
+
+</html>
